@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Recipe from './Recipe';
 import './App.css';
+import Header from './header'
 
 // "https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free";
 
@@ -45,6 +46,7 @@ const App = () => {
 
 	return(
 		<div className="app">
+			<Header />
 			<form onSubmit={getSearch} className="search-form">
 				<input
 					className="search-bar"
