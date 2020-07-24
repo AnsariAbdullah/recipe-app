@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from './Recipe';
 import './App.css';
 
 // "https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free";
@@ -8,20 +9,24 @@ const App = () => {
 	const APP_ID = '3c6696ef';
 	const APP_KEY = 'edc3892a05b4c235648d3f34cd64f41a';
 
+	const [recipes, setRecipes] = useState([]);
+
 	useEffect(()=>{
-		getRecipe();
+		// getRecipe();
 	}, [])
 
 	const getRecipe = async () => {
-		const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`)
-		const data = await response.json();
-		console.log('data ===> ', data)
-
 		// API using promises
 		/* fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`)
 		.then(response => {
 			response.json()
 		}) */
+
+		// API using async-await
+		const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`)
+		const data = await response.json();
+		setRecipes(data.hits)
+
 	}
 
 	return(
@@ -32,6 +37,9 @@ const App = () => {
 					Search
 				</button>
 			</form>
+			{recipes.map(recipe=>(
+				<Recipe />
+			))}
 		</div>
 	)
 }
