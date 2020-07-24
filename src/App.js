@@ -14,7 +14,7 @@ const App = () => {
 	const [query, setQuery] = useState("salad");
 
 	useEffect(()=>{
-		// getRecipe();
+		getRecipe();
 	}, [query])
 
 	const getRecipe = async () => {
