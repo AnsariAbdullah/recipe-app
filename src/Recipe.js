@@ -5,14 +5,14 @@ const Recipe = (props) => {
 	const { title, calories, image, ingredients, healthLabels } = props;
 	return (
 		<div className={style.recipe}>
-			<h2>{title}</h2>
-			<p>{calories}</p>
-			<ol>
+			<p className={style.title}>{title}</p>
+			<p className={style.calorieCount}>Calories: {Math.floor(calories)}</p>
+			<ul className={style.list}>
 				{ingredients.map((ingredient, index) => (
-					<li key={index}>{ingredient.text}</li>
+					<li key={index} className={style.listItems}>{ingredient.text}</li>
 				))}
-			</ol>
-			<div>
+			</ul>
+			<div className={style.pillsWrapper}>
 				{healthLabels.map((healthLabel, index) => (
 					<span key={index} className={style.pills}>{healthLabel}</span>
 				))}
