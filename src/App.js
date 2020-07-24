@@ -13,10 +13,12 @@ const App = () => {
 	const [recipes, setRecipes] = useState([]);
 	const [search, setSearch] = useState("");
 	const [query, setQuery] = useState("salad");
+	const [page, setPage] = useState(0)
 
 	useEffect(()=>{
 		getRecipe();
-	}, [query])
+		console.log('useEffect run')
+	}, [query, page])
 
 	const getRecipe = async () => {
 		// API using promises
@@ -26,7 +28,7 @@ const App = () => {
 		}) */
 
 		// API using async-await
-		const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+		const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=${page}`)
 		const data = await response.json();
 		setRecipes(data.hits)
 
@@ -42,6 +44,17 @@ const App = () => {
 		e.preventDefault();
 		setQuery(search);
 		setSearch('');
+	}
+
+	const previousPage =() => {
+		setPage(page - 10);
+		console.log('page ====> ', page);
+	}
+
+
+	const nextPage =() => {
+		setPage(page + 10);
+		console.log('page ====> ', page);
 	}
 
 	return(
@@ -68,6 +81,10 @@ const App = () => {
 						ingredients={recipe.recipe.ingredients}
 					/>
 				))}
+			</div>
+			<div className="page">
+				<button onClick={previousPage}>Prev</button>
+				<button onClick={nextPage}>Next</button>
 			</div>
 		</div>
 	)
