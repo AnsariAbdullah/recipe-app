@@ -37,3 +37,8 @@
 .pillsWrapper{
 	width: 65%;
 }
+@media only screen and (max-width: 768px) {
+	.pillsWrapper{
+		width: 100%;
+	}
+}
