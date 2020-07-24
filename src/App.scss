@@ -17,11 +17,19 @@
 			border: none;
 			padding: 10px;
 		}
+		.clear {
+			position: relative;
+			right: 20px;
+			color: red;
+			display: inline;
+			cursor: pointer;
+		}
 		.search-button{
 			background: lightcoral;
 			border: none;
 			padding: 10px 20px;
 			color: #fff;
+			margin-left: -9px;
 		}
 	}
 	.recipes{

@@ -13,7 +13,7 @@ const App = () => {
 	const [recipes, setRecipes] = useState([]);
 	const [search, setSearch] = useState("");
 	const [query, setQuery] = useState("");
-	const [page, setPage] = useState(0)
+	const [page, setPage] = useState(0);
 
 	useEffect(()=>{
 		getRecipe();
@@ -46,15 +46,21 @@ const App = () => {
 		setSearch('');
 	}
 
+	// get previous page data
 	const previousPage =() => {
 		setPage(page - 10);
 		console.log('page ====> ', page);
 	}
 
-
+	// get next page data
 	const nextPage =() => {
 		setPage(page + 10);
 		console.log('page ====> ', page);
+	}
+
+	// clear search field
+	const clearSearchFiled = () => {
+		setSearch('');
 	}
 
 	return(
@@ -67,6 +73,7 @@ const App = () => {
 					value={search}
 					onChange={updateSearch}
 				/>
+				{search.length > 0 && <span onClick={clearSearchFiled} className="clear">X</span>}
 				<button className="search-button" type="submit">
 					Search
 				</button>
