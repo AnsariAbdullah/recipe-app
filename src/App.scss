@@ -29,4 +29,26 @@
 		justify-content: space-around;
 		flex-wrap: wrap;
 	}
+	.page {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+		margin: 0 auto;
+		button {
+			border: none;
+			background: #fff;
+			color: lightcoral;
+			padding: 10px 30px;
+			border-radius: 10px;
+			font-size: 15px;
+			cursor: pointer;
+		}
+	}
+	.placeholder {
+    text-align: center;
+    font-size: 34px;
+		color: #fff;
+    font-family: 'Poppins', sans-serif;
+	}
 }
