@@ -12,7 +12,7 @@ const App = () => {
 
 	const [recipes, setRecipes] = useState([]);
 	const [search, setSearch] = useState("");
-	const [query, setQuery] = useState("");
+	const [query, setQuery] = useState("banana");
 	const [page, setPage] = useState(0);
 
 	useEffect(()=>{
@@ -86,6 +86,7 @@ const App = () => {
 						calories={recipe.recipe.calories}
 						image={recipe.recipe.image}
 						ingredients={recipe.recipe.ingredients}
+						healthLabels={recipe.recipe.healthLabels}
 					/>
 				))}
 			</div>

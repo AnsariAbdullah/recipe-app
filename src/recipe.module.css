@@ -9,3 +9,12 @@
 	align-items: center;
 	min-width: 40%;
 }
+.pills{
+	display: inline-block;
+	background: lightcoral;
+	margin: 0 3px;
+	padding: 4px 6px;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 13px;
+}
