@@ -3,8 +3,6 @@ import Recipe from './Recipe';
 import './App.scss';
 import Header from './header'
 
-// "https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free";
-
 
 const App = () => {
 	const APP_ID = '3c6696ef';
@@ -32,7 +30,6 @@ const App = () => {
 		const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=${page}${filter}`);
 		const data = await response.json();
 		setRecipes(data.hits);
-		console.log(data.hits);
 	}
 
 	// update search field
@@ -121,9 +118,11 @@ const App = () => {
 						<span onClick={Snack} className="checkbox">Snack</span>
 					</div>
 
-					<span onClick={AlcoholFree} className="checkbox">Alcohol free</span>
-
-					<span onClick={ClearFilter} className="checkbox">Clear</span>
+					<p className="filter-title">Other</p>
+					<div className="checkbox-wrapper">
+						<span onClick={AlcoholFree} className="checkbox">Alcohol free</span>
+						<span onClick={ClearFilter} className="checkbox">Clear</span>
+					</div>
 				</div>
 			}
 			<form onSubmit={getSearch} className="search-form">
@@ -139,29 +138,33 @@ const App = () => {
 				</button>
 			</form>
 			{
-				recipes ? 	
-				<div className="recipes">
-					{recipes.map((recipe, index)=>(
-						<Recipe
-							key={index}
-							title={recipe.recipe.label}
-							calories={recipe.recipe.calories}
-							image={recipe.recipe.image}
-							ingredients={recipe.recipe.ingredients}
-							healthLabels={recipe.recipe.healthLabels}
-						/>
-					))}
-				</div>
-				: <h3>Nothing in the selected category</h3>
-			}
-			{
-				query ? 
-				<div className="page">
-					{page > 0 && <button onClick={previousPage}>Prev</button>}
-					<button onClick={nextPage}>Next</button>
-				</div>
-				: <h3 className="placeholder">Search recipes</h3>
-			}
+				// when query hits and recipes show up
+				query && recipes ? 
+				<>
+					<div className="recipes">
+						{recipes.map((recipe, index)=>(
+							<Recipe
+								key={index}
+								title={recipe.recipe.label}
+								calories={recipe.recipe.calories}
+								image={recipe.recipe.image}
+								ingredients={recipe.recipe.ingredients}
+								healthLabels={recipe.recipe.healthLabels}
+							/>
+						))}
+					</div>
+					<div className="page">
+						{page > 0 && <button onClick={previousPage}>Prev</button>}
+						<button onClick={nextPage}>Next</button>
+					</div>
+				</> 
+				:
+				// when query hits and recipes don't show up / mapping error
+				query && !recipes ? 
+				<h3 className="placeholder">Nothing in the selected category</h3>
+				: 
+				<h3 className="placeholder">Search recipes</h3>
+			 }
 		</div>
 	)
 }
