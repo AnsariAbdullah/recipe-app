@@ -23,6 +23,10 @@
 		margin: 5px 5px;
 		border-radius: 15px;
 		cursor: pointer;
+		&.selected{
+			color: #fff;
+			background: lightcoral;
+		}
 	}
 	.search-form{
 		min-height: 10vh;

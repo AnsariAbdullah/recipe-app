@@ -63,34 +63,42 @@ const App = () => {
 
 	const Indian = () => {
 		setFilter(filter + '&cuisineType=indian');
+		document.getElementById('indian').classList.toggle('selected');
 	}
 
 	const Chinese = () => {
 		setFilter(filter + '&cuisineType=chinese');
+		document.getElementById('chinese').classList.toggle('selected');
 	}
 
 	const French = () => {
 		setFilter(filter + '&cuisineType=french');
+		document.getElementById('french').classList.toggle('selected');
 	}
 
 	const Breakfast = () => {
 		setFilter(filter + '&mealType=breakfast');
+		document.getElementById('breakfast').classList.toggle('selected');
 	}
 
 	const Lunch = () => {
 		setFilter(filter + '&mealType=lunch');
+		document.getElementById('lunch').classList.toggle('selected');
 	}
 
 	const Dinner = () => {
 		setFilter(filter + '&mealType=dinner');
+		document.getElementById('dinner').classList.toggle('selected');
 	}
 
 	const Snack = () => {
 		setFilter(filter + '&mealType=snack');
+		document.getElementById('snack').classList.toggle('selected');
 	}
 
 	const AlcoholFree = () => {
 		setFilter(filter + '&health=alcohol-free');
+		document.getElementById('alcohol-free').classList.toggle('selected');
 	}	
 
 	const ClearFilter = () => {
@@ -106,21 +114,21 @@ const App = () => {
 				<div className="filter">
 					<p className="filter-title">Cuisine Type</p>
 					<div className="checkbox-wrapper">
-						<span onClick={Indian} className="checkbox">Indian</span>
-						<span onClick={Chinese} className="checkbox">Chinese</span>
-						<span onClick={French} className="checkbox">French</span>
+						<span onClick={Indian} id="indian" className="checkbox">Indian</span>
+						<span onClick={Chinese} id="chinese" className="checkbox">Chinese</span>
+						<span onClick={French} id="french" className="checkbox">French</span>
 					</div>
 					<p className="filter-title">Meal Type</p>
 					<div className="checkbox-wrapper">
-						<span onClick={Breakfast} className="checkbox">Breakfast</span>
-						<span onClick={Lunch} className="checkbox">Lunch</span>
-						<span onClick={Dinner} className="checkbox">Dinner</span>
-						<span onClick={Snack} className="checkbox">Snack</span>
+						<span onClick={Breakfast} id="breakfast" className="checkbox">Breakfast</span>
+						<span onClick={Lunch} id="lunch" className="checkbox">Lunch</span>
+						<span onClick={Dinner} id="dinner" className="checkbox">Dinner</span>
+						<span onClick={Snack} id="snack" className="checkbox">Snack</span>
 					</div>
 
 					<p className="filter-title">Other</p>
 					<div className="checkbox-wrapper">
-						<span onClick={AlcoholFree} className="checkbox">Alcohol free</span>
+						<span onClick={AlcoholFree} id="alcohol-free" className="checkbox">Alcohol free</span>
 						<span onClick={ClearFilter} className="checkbox">Clear</span>
 					</div>
 				</div>
