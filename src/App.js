@@ -49,12 +49,14 @@ const App = () => {
 	const previousPage =() => {
 		setPage(page - 10);
 		console.log('page ====> ', page);
+		document.documentElement.scrollTop = 0;
 	}
 
 	// get next page data
 	const nextPage =() => {
 		setPage(page + 10);
 		console.log('page ====> ', page);
+		document.documentElement.scrollTop = 0;
 	}
 
 	// clear search field
